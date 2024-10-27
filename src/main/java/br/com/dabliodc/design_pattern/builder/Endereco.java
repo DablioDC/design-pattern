@@ -5,21 +5,41 @@ public class Endereco {
     private String rua;
     private String complemento;
 
-    private Endereco(){
+    // Quando utilizar o Builder separado no exemplo com EnderecoBuilder o construtor tem que ser Protected e não private
+    // e as classes tem que segui o padrão de estar no mesmo Package, para que via protected ela possa ser acessada.
+    protected Endereco(){
     }
 
     public static Endereco builder(){
         return new Endereco();
     }
 
-    public Endereco rua(String rua){
+    // Sets do formato do builder direto na classe
+//    public Endereco setRua(String rua){
+//        this.rua = rua;
+//        return this;
+//    }
+
+//    public Endereco setComplemento(String complemento){
+//        this.complemento = complemento;
+//        return this;
+//    }
+
+    //Sets do modelo do builder separado
+    protected void setRua(String rua){
         this.rua = rua;
-        return this;
     }
 
-    public Endereco complemento(String complemento){
+    protected void setComplemento(String complemento){
         this.complemento = complemento;
-        return this;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public String getComplemento() {
+        return complemento;
     }
 
     @Override
